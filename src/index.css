@@ -1,6 +1,58 @@
-body {
+:root {
+	--header-background: #001529;
+}
+
+* {
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	min-width: 100vw;
+	min-height: 100dvh;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#root {
+	min-width: 100vw;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-wrapper {
+	min-width: 100vw;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-wrapper > header {
+	flex-grow: 0;
+}
+
+.app-wrapper > main {
+	flex-grow: 1;
+	width: 100%;
+	max-width: 1000px;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-wrapper > footer {
+	flex-grow: 0;
+}
+
+.center1000px {
+	width: 100%;
+	max-width: 1000px;
+	margin-inline: auto;
+	display: flex;
 }

@@ -1,8 +1,17 @@
 import React from "react";
+import AppHeader from "./Shared/Layout/Header/AppHeader";
+import AppFooter from "./Shared/Layout/Footer/AppFooter";
+import NotesPage from "./Pages/NotesPage/NotesPage";
 
-function App() {
+const App = () => {
 	return (
-		<h1>Hello from React!</h1>
+		<div className="app-wrapper">
+			<AppHeader/>
+			<main>
+				<NotesPage/>
+			</main>
+			<AppFooter/>
+		</div>
 	);
 }
 

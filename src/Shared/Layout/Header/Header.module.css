@@ -1,0 +1,26 @@
+.mainHeader {
+	background-color: var(--header-background);
+	width: 100%;
+	color: white;
+}
+
+.centeredMainHeader {
+	display: flex;
+	margin-block: 15px;
+	justify-content: space-between;
+	vertical-align: center;
+	flex-wrap: wrap;
+}
+
+.logoContainer {
+	display: flex;
+	vertical-align: center;
+	gap: 15px;
+	margin-left: 15px;
+	font-size: larger;
+}
+
+.logoContainer > img {
+	width: 40px;
+	height: auto;
+}
