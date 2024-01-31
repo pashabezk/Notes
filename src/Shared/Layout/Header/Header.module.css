@@ -4,9 +4,14 @@
 	color: white;
 }
 
+.mainHeader h1 {
+	font-size: 32px;
+}
+
 .centeredMainHeader {
 	display: flex;
 	margin-block: 15px;
+	padding-inline: 15px;
 	justify-content: space-between;
 	vertical-align: center;
 	flex-wrap: wrap;
@@ -14,10 +19,8 @@
 
 .logoContainer {
 	display: flex;
-	vertical-align: center;
-	gap: 15px;
-	margin-left: 15px;
-	font-size: larger;
+	align-items: center;
+	gap: 10px;
 }
 
 .logoContainer > img {
