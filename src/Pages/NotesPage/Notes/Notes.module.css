@@ -2,6 +2,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;
+	align-items: flex-start;
 }
 
 .noteContainer {
@@ -10,8 +11,7 @@
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
-	border: solid darkorange 2px;
+	border: solid 2px;
 }
 
 .noteTitle {
@@ -43,13 +43,28 @@
 	resize: vertical;
 }
 
-.noteDateContainer {
+.noteBottomBar {
 	display: flex;
 	align-items: center;
 	gap: 5px;
+	align-self: flex-end;
+	margin-top: 5px;
 }
 
 .noteDate {
 	font-size: var(--font-size-smaller);
 	color: var(--secondary-text-color);
+}
+
+.iconContainer {
+	padding: 1px;
+	cursor: pointer;
+}
+
+.hiddenColorPicker {
+	opacity: 0;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	cursor: pointer;
 }

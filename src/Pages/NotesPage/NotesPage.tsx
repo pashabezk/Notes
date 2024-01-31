@@ -9,8 +9,10 @@ const NotesPage = () => {
 	const {createNote} = notesStorage;
 	return (
 		<div className={styles.notesPageWrapper}>
-			<h1>Мои заметки</h1>
-			<Button type="primary" icon={<FileAddOutlined/>} onClick={() => createNote()}>Создать</Button>
+			<div className={styles.notesPageHeader}>
+				<h1>Мои заметки</h1>
+				<Button type="primary" icon={<FileAddOutlined/>} onClick={() => createNote()}>Добавить</Button>
+			</div>
 			<NotesContainer/>
 		</div>
 	);

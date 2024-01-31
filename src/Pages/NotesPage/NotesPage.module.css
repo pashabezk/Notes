@@ -1,3 +1,10 @@
 .notesPageWrapper {
 	padding: 15px;
 }
+
+.notesPageHeader {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 15px;
+}
