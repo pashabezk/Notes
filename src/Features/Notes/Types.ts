@@ -4,6 +4,7 @@ export interface Note {
 	title: string;
 	text: string;
 	color: string;
+	borderColor: string;
 	creationDate: Date;
 }
 

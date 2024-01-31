@@ -13,7 +13,7 @@
 	margin-block: 15px;
 	padding-inline: 15px;
 	justify-content: space-between;
-	vertical-align: center;
+	align-items: center;
 	flex-wrap: wrap;
 }
 

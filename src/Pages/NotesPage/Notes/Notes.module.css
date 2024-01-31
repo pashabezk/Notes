@@ -1,4 +1,55 @@
+.notesWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
 .noteContainer {
-	max-width: 300px;
+	width: 200px;
+	max-height: 300px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 	border: solid darkorange 2px;
+}
+
+.noteTitle {
+	padding: 5px;
+	font-weight: bold;
+}
+
+.noteTitleInput {
+	font-family: inherit;
+	font-size: inherit;
+	width: 100%;
+	text-decoration: underline;
+	border: none;
+	outline: none;
+}
+
+.noteText {
+	padding: 5px;
+}
+
+.noteTextArea {
+	font-family: inherit;
+	font-size: inherit;
+	width: 100%;
+	background-color: transparent;
+	text-decoration: underline;
+	border: none;
+	outline: none;
+	resize: vertical;
+}
+
+.noteDateContainer {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.noteDate {
+	font-size: var(--font-size-smaller);
+	color: var(--secondary-text-color);
 }
