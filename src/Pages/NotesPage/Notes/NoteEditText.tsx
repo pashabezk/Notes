@@ -1,30 +1,42 @@
 import React, {useRef, useState} from "react";
 import styles from "./Notes.module.css";
 import {useOnClickOutside} from "../../../Shared/Hooks/UseOnClickOutside";
+import notesStorage from "../../../Storages/NotesStorage";
 
 interface NoteEditTextProps {
+	noteId: string;
 	initialText: string;
 	onClickOutside: () => void;
 	backgroundColor: string;
+	textHeight: number;
 }
 
 /** Component represents textarea for note text edit */
-const NoteEditText = ({initialText, onClickOutside, backgroundColor}: NoteEditTextProps) => {
+const NoteEditText = ({noteId, initialText, onClickOutside = () => {}, backgroundColor, textHeight}: NoteEditTextProps) => {
+	const {updateNote} = notesStorage;
 	const [text, setText] = useState(initialText);
-	const ref = useRef(null);
+	const [height, setHeight] = useState(textHeight);
+	const ref = useRef<HTMLTextAreaElement>(null);
 
-	useOnClickOutside(ref, onClickOutside);
+	useOnClickOutside(ref, () => {
+		updateNote(noteId, {text});
+		onClickOutside();
+	});
 
 	const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setText(e.target.value);
+		setHeight(ref.current?.scrollHeight || textHeight);
 	};
 
 	return (
 		<textarea
 			placeholder="Введите заголовок"
 			value={text}
-			className={"scrollbar " + styles.noteText + " " + styles.noteTextArea}
-			style={{backgroundColor: backgroundColor}}
+			className={styles.noteText + " " + styles.noteTextArea}
+			style={{
+				backgroundColor: backgroundColor,
+				height: height + "px",
+			}}
 			ref={ref}
 			onChange={onChange}
 			autoFocus={true}

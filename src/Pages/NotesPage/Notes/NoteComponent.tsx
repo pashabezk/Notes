@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined} from "@ant-design/icons";
 import styles from "./Notes.module.css";
 import {Note} from "../../../Features/Notes/Types";
@@ -20,7 +20,18 @@ const secondaryIconsStyle = {
 const NoteComponent = ({note}: NoteComponentProps) => {
 	const [isTitleEdit, setIsTitleEdit] = useState(false);
 	const [isTextEdit, setIsTextEdit] = useState(false);
-	const {deleteNote} = notesStorage;
+	const [textHeight, setTextHeight] = useState(30); // for setting textarea height
+	const textRef = useRef<HTMLPreElement>(null);
+	const {deleteNote, updateNote} = notesStorage;
+
+	const setTextToEditMode = () => {
+		setTextHeight(textRef.current?.scrollHeight || 30);
+		setIsTextEdit(true);
+	};
+
+	const onColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateNote(note.id, {color: e.target.value});
+	}
 
 	return (
 		<div
@@ -31,38 +42,46 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 			}}
 		>
 			{
-				isTitleEdit
-					? (
-						<NoteEditTitle
-							initialTitle={note.title}
-							onClickOutside={() => setIsTitleEdit(false)}
-							backgroundColor={note.borderColor}
-						/>
-					) : (
-						<h4
-							className={styles.noteTitle}
-							onClick={() => setIsTitleEdit(true)}
-						>
-							{note.title}
-						</h4>
-					)
+				isTitleEdit ? (
+					<NoteEditTitle
+						noteId={note.id}
+						initialTitle={note.title}
+						onClickOutside={() => setIsTitleEdit(false)}
+						backgroundColor={note.borderColor}
+					/>
+				) : (
+					<h4
+						className={styles.noteTitle}
+						onClick={() => setIsTitleEdit(true)}
+					>
+						{note.title || "Добавьте заголовок"}
+					</h4>
+				)
 			}
 			{
-				isTextEdit
-					? (
-						<NoteEditText
-							initialText={note.text}
-							onClickOutside={() => setIsTextEdit(false)}
-							backgroundColor={note.borderColor}
-						/>
-					)
-					: <p onClick={() => setIsTextEdit(true)} className={styles.noteText}>{note.text}</p>
+				isTextEdit ? (
+					<NoteEditText
+						noteId={note.id}
+						initialText={note.text}
+						onClickOutside={() => setIsTextEdit(false)}
+						backgroundColor={note.borderColor}
+						textHeight={textHeight}
+					/>
+				) : (
+					<pre
+						ref={textRef}
+						onClick={setTextToEditMode}
+						className={"scrollbar " + styles.noteText}
+					>
+						{note.text || "Нажмите, чтобы добавить текст"}
+					</pre>
+				)
 			}
 			<div className={styles.noteBottomBar}>
 				<ClockCircleOutlined style={secondaryIconsStyle}/>
 				<p className={styles.noteDate}>{dateToDateTime(note.creationDate)}</p>
 				<div className={styles.iconContainer} style={{position: "relative"}}>
-					<input type="color" className={styles.hiddenColorPicker}/>
+					<input type="color" onChange={onColorChange} className={styles.hiddenColorPicker}/>
 					<BgColorsOutlined style={secondaryIconsStyle}/>
 				</div>
 				<div className={styles.iconContainer}>

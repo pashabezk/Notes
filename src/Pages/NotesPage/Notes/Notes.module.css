@@ -17,19 +17,26 @@
 .noteTitle {
 	padding: 5px;
 	font-weight: bold;
+	margin-bottom: 3px;
 }
 
 .noteTitleInput {
 	font-family: inherit;
 	font-size: inherit;
 	width: 100%;
+	margin-bottom: 3px;
 	text-decoration: underline;
 	border: none;
 	outline: none;
 }
 
 .noteText {
+	font-family: inherit;
+	font-size: inherit;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 	padding: 5px;
+	overflow: auto;
 }
 
 .noteTextArea {
@@ -41,6 +48,7 @@
 	border: none;
 	outline: none;
 	resize: vertical;
+	scrollbar-width: thin;
 }
 
 .noteBottomBar {

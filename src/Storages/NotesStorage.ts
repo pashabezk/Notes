@@ -11,6 +11,11 @@ class NotesStorage {
 		makeAutoObservable(this);
 	}
 
+	/** Method to get note by id */
+	getNote = (noteId: string): Note | undefined => {
+		return this.notes.find((note) => note.id === noteId);
+	}
+
 	/** Method to add note to storage */
 	addNote = (newNote: Note) => {
 		this.notes.push(newNote);
@@ -19,8 +24,8 @@ class NotesStorage {
 	/** Method to create new note and add it to storage */
 	createNote = (noteDraft: NoteDraft = {}) => {
 		const newNote: Note = {
-			title: "Hello",
-			text: "Lorem ipsum",
+			title: "Новая заметка",
+			text: "",
 			color: DEFAULT_NOTE_COLOR,
 			borderColor: "",
 			creationDate: new Date(),
@@ -37,6 +42,26 @@ class NotesStorage {
 	deleteNote = (id: string) => {
 		this.notes = this.notes.filter((note) => note.id !== id);
 	}
+
+	/**
+	 * Method to update note
+	 * @param noteId id of note that should be updated
+	 * @param noteDraft set values that should be updated
+	 */
+	updateNote = (noteId: string, noteDraft: NoteDraft = {}) => {
+		const note = this.getNote(noteId) as Note;
+		if (!note) {
+			return;
+		}
+		const newNote: Note = {
+			...note,
+			...noteDraft
+		};
+		if (noteDraft.color && !noteDraft.borderColor) {
+			newNote.borderColor = makeShade(newNote.color, -30);
+		}
+		this.notes = this.notes.map((n) => n.id === noteId ? newNote : n);
+	};
 }
 
 const notesStorage = new NotesStorage();
