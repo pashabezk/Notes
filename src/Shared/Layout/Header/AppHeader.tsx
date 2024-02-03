@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./Header.module.css"
 import {FileTextFilled} from "@ant-design/icons";
+import styles from "./Header.module.css"
+import LanguageSelector from "../../../Features/Languages/LanguageSelector/LanguageSelector";
+
 
 /** Header component */
 const AppHeader = () => {
@@ -11,6 +13,7 @@ const AppHeader = () => {
 					<FileTextFilled style={{fontSize: "32px"}}/>
 					<h1>Notes</h1>
 				</div>
+				<LanguageSelector/>
 			</div>
 		</header>
 	);

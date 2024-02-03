@@ -1,8 +1,10 @@
 import {makeAutoObservable} from "mobx";
 import {v4 as uuid} from "uuid";
-import {Note, NoteDraft} from "../Features/Notes/Types";
-import {DEFAULT_NOTE_COLOR} from "../Features/Notes/Constants";
-import makeShade from "../Features/ColorUtils/MakeShade";
+import {Note, NoteDraft} from "./Types";
+import {DEFAULT_NOTE_COLOR} from "./Constants";
+import makeShade from "../ColorUtils/MakeShade";
+import languageStorage from "../Languages/LanguageStorage";
+import {messages} from "../Languages/Messages";
 
 class NotesStorage {
 	notes: Note[] = [];
@@ -23,8 +25,9 @@ class NotesStorage {
 
 	/** Method to create new note and add it to storage */
 	createNote = (noteDraft: NoteDraft = {}) => {
+		const {language} = languageStorage;
 		const newNote: Note = {
-			title: "Новая заметка",
+			title: messages[language].new_note_title,
 			text: "",
 			color: DEFAULT_NOTE_COLOR,
 			borderColor: "",

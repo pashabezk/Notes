@@ -1,4 +1,5 @@
 import React from "react";
+import {FormattedMessage} from "react-intl";
 import styles from "./Footer.module.css"
 
 /** Footer component */
@@ -8,7 +9,7 @@ const AppFooter = () => {
 			<div className={styles.mainFooterCentered}>
 				<div className={"center1000px " + styles.mainFooter}>
 					<p>
-						Created by{" "}
+						<FormattedMessage id="created_by"/>{" "}
 						<a href="https://pashabezk.github.io/MainPage" target="_blank" rel="noreferrer">pashabezk</a>
 					</p>
 				</div>

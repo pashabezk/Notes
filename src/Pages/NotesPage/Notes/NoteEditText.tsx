@@ -1,7 +1,8 @@
 import React, {useRef, useState} from "react";
+import {useIntl} from "react-intl";
 import styles from "./Notes.module.css";
 import {useOnClickOutside} from "../../../Shared/Hooks/UseOnClickOutside";
-import notesStorage from "../../../Storages/NotesStorage";
+import notesStorage from "../../../Features/Notes/NotesStorage";
 
 interface NoteEditTextProps {
 	noteId: string;
@@ -17,6 +18,7 @@ const NoteEditText = ({noteId, initialText, onClickOutside = () => {}, backgroun
 	const [text, setText] = useState(initialText);
 	const [height, setHeight] = useState(textHeight);
 	const ref = useRef<HTMLTextAreaElement>(null);
+	const intl = useIntl();
 
 	useOnClickOutside(ref, () => {
 		updateNote(noteId, {text});
@@ -30,7 +32,7 @@ const NoteEditText = ({noteId, initialText, onClickOutside = () => {}, backgroun
 
 	return (
 		<textarea
-			placeholder="Введите заголовок"
+			placeholder={intl.formatMessage({id: "note_text_placeholder"})}
 			value={text}
 			className={styles.noteText + " " + styles.noteTextArea}
 			style={{

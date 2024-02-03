@@ -1,7 +1,8 @@
 import React, {useRef, useState} from "react";
+import {useIntl} from "react-intl";
 import styles from "./Notes.module.css";
 import {useOnClickOutside} from "../../../Shared/Hooks/UseOnClickOutside";
-import notesStorage from "../../../Storages/NotesStorage";
+import notesStorage from "../../../Features/Notes/NotesStorage";
 
 interface NoteEditTitleProps {
 	noteId: string;
@@ -20,6 +21,7 @@ const NoteEditTitle = ({
 	const {updateNote} = notesStorage;
 	const [title, setTitle] = useState(initialTitle);
 	const titleRef = useRef(null);
+	const intl = useIntl();
 
 	useOnClickOutside(titleRef, () => {
 		updateNote(noteId, {title});
@@ -32,7 +34,7 @@ const NoteEditTitle = ({
 
 	return (
 		<input
-			placeholder="Введите заголовок"
+			placeholder={intl.formatMessage({id: "note_title_placeholder"})}
 			value={title}
 			className={styles.noteTitle + " " + styles.noteTitleInput}
 			style={{backgroundColor: backgroundColor}}

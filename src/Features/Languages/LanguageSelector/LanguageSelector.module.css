@@ -1,0 +1,10 @@
+.selectorLabel {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.flagImg {
+	height: 15px;
+	width: auto;
+}

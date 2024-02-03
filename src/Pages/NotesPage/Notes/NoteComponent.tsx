@@ -1,11 +1,12 @@
 import React, {useRef, useState} from "react";
 import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined} from "@ant-design/icons";
+import {FormattedMessage} from "react-intl";
 import styles from "./Notes.module.css";
 import {Note} from "../../../Features/Notes/Types";
 import {dateToDateTime} from "../../../Features/DateTimeUtils/DateTimeUtils";
 import NoteEditTitle from "./NoteEditTitle";
 import NoteEditText from "./NoteEditText";
-import notesStorage from "../../../Storages/NotesStorage";
+import notesStorage from "../../../Features/Notes/NotesStorage";
 
 interface NoteComponentProps {
 	note: Note
@@ -54,7 +55,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 						className={styles.noteTitle}
 						onClick={() => setIsTitleEdit(true)}
 					>
-						{note.title || "Добавьте заголовок"}
+						{note.title || <FormattedMessage id="add_note_title"/>}
 					</h4>
 				)
 			}
@@ -73,7 +74,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 						onClick={setTextToEditMode}
 						className={"scrollbar " + styles.noteText}
 					>
-						{note.text || "Нажмите, чтобы добавить текст"}
+						{note.text || <FormattedMessage id="add_note_text"/>}
 					</pre>
 				)
 			}
