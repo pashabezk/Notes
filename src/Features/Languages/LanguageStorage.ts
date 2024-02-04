@@ -12,10 +12,10 @@ class LanguageStorage {
 
 	/**
 	 * Method to set new locale
-	 * @param loc locale to set
+	 * @param lang language locale to set
 	 */
-	setLocale = (loc: LANGUAGES) => {
-		this.language = loc;
+	setLanguage = (lang: LANGUAGES) => {
+		this.language = lang;
 	}
 }
 

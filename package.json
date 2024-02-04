@@ -1,6 +1,6 @@
 {
 	"name": "notes",
-	"version": "0.8.0",
+	"version": "0.8.1",
 	"homepage": "https://pashabezk.github.io/Notes",
 	"private": true,
 	"dependencies": {
@@ -32,7 +32,13 @@
 		"extends": [
 			"react-app",
 			"react-app/jest"
-		]
+		],
+		"plugins": [
+			"react-hooks"
+		],
+		"rules": {
+			"react-hooks/exhaustive-deps": "off"
+		}
 	},
 	"browserslist": {
 		"production": [

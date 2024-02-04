@@ -1,8 +1,8 @@
 /** Available languages */
 export enum LANGUAGES {
-	ENGLISH = "en-US",
-	RUSSIAN = "ru-RU",
-	GERMAN = "de-DE",
+	ENGLISH = "en",
+	RUSSIAN = "ru",
+	GERMAN = "de",
 }
 
 export const DEFAULT_LANG: LANGUAGES = LANGUAGES.ENGLISH;

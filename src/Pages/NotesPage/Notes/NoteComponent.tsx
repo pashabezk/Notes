@@ -81,7 +81,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 			<div className={styles.noteBottomBar}>
 				<ClockCircleOutlined style={secondaryIconsStyle}/>
 				<p className={styles.noteDate}>{dateToDateTime(note.creationDate)}</p>
-				<div className={styles.iconContainer} style={{position: "relative"}}>
+				<div className={styles.iconContainer}>
 					<input type="color" onChange={onColorChange} className={styles.hiddenColorPicker}/>
 					<BgColorsOutlined style={secondaryIconsStyle}/>
 				</div>

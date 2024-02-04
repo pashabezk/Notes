@@ -67,6 +67,7 @@
 .iconContainer {
 	padding: 1px;
 	cursor: pointer;
+	position: relative;
 }
 
 .hiddenColorPicker {

@@ -1,5 +1,6 @@
 import {LANGUAGES} from "./Constants";
 
+/** Messages for different languages */
 export const messages = {
 	[LANGUAGES.ENGLISH]: {
 		// Language selector

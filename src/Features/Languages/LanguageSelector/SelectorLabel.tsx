@@ -13,9 +13,9 @@ interface SelectorLabelProps {
 
 /** Component represent language in language selector */
 const SelectorLabel = ({language, languageStr, isExperimental = false}: SelectorLabelProps) => {
-	const {setLocale} = languageStorage;
+	const {setLanguage} = languageStorage;
 	return (
-		<p className={styles.selectorLabel} onClick={() => setLocale(language)}>
+		<p className={styles.selectorLabel} onClick={() => setLanguage(language)}>
 			<FlagImg lang={language}/>
 			{languageStr}
 			{isExperimental && <ExperimentOutlined/>}
