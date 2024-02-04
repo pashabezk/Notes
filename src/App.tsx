@@ -7,13 +7,14 @@ import NotesPage from "./Pages/NotesPage/NotesPage";
 import {messages} from "./Features/Languages/Messages";
 import {DEFAULT_LANG, LANGUAGES} from "./Features/Languages/Constants";
 import languageStorage from "./Features/Languages/LanguageStorage";
+import {LS_LANGUAGE} from "./Shared/LocalStorageConstants";
 
 const App = observer(() => {
 	const {language, setLanguage} = languageStorage;
 
 	useEffect(() => {
 		// get language from local storage
-		const localStorageLang = localStorage.getItem("language");
+		const localStorageLang = localStorage.getItem(LS_LANGUAGE);
 		if (localStorageLang) {
 			setLanguage(localStorageLang as LANGUAGES);
 		} else {
@@ -21,7 +22,6 @@ const App = observer(() => {
 			for (let lang of navigator.languages as LANGUAGES[]) {
 				if (Object.values(LANGUAGES).includes(lang)) {
 					setLanguage(lang);
-					localStorage.setItem("language", lang);
 					break;
 				}
 			}
