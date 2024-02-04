@@ -5,11 +5,14 @@ import {DEFAULT_NOTE_COLOR} from "./Constants";
 import makeShade from "../ColorUtils/MakeShade";
 import languageStorage from "../Languages/LanguageStorage";
 import {messages} from "../Languages/Messages";
+import loadNotes from "./Utils/LoadNotes";
+import saveNotes from "./Utils/SaveNotes";
 
 class NotesStorage {
 	notes: Note[] = [];
 
 	constructor() {
+		this.notes = loadNotes();
 		makeAutoObservable(this);
 	}
 
@@ -39,11 +42,13 @@ class NotesStorage {
 			newNote.borderColor = makeShade(newNote.color, -30);
 		}
 		this.addNote(newNote);
+		this.save();
 	}
 
 	/** Method to delete note from storage */
 	deleteNote = (id: string) => {
 		this.notes = this.notes.filter((note) => note.id !== id);
+		this.save();
 	}
 
 	/**
@@ -64,7 +69,13 @@ class NotesStorage {
 			newNote.borderColor = makeShade(newNote.color, -30);
 		}
 		this.notes = this.notes.map((n) => n.id === noteId ? newNote : n);
+		this.save();
 	};
+
+	/** Method to save notes to external storage */
+	save = () => {
+		saveNotes(this.notes);
+	}
 }
 
 const notesStorage = new NotesStorage();

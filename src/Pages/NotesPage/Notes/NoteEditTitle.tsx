@@ -34,6 +34,7 @@ const NoteEditTitle = ({
 
 	return (
 		<input
+			name="note_title"
 			placeholder={intl.formatMessage({id: "note_title_placeholder"})}
 			value={title}
 			className={styles.noteTitle + " " + styles.noteTitleInput}

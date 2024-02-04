@@ -32,6 +32,7 @@ const NoteEditText = ({noteId, initialText, onClickOutside = () => {}, backgroun
 
 	return (
 		<textarea
+			name="note_text"
 			placeholder={intl.formatMessage({id: "note_text_placeholder"})}
 			value={text}
 			className={styles.noteText + " " + styles.noteTextArea}

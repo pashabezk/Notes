@@ -17,7 +17,8 @@ class LanguageStorage {
 	 */
 	setLanguage = (lang: LANGUAGES) => {
 		this.language = lang;
-		localStorage.setItem(LS_LANGUAGE, lang);
+		localStorage.setItem(LS_LANGUAGE, lang); // save to local storage
+		document.documentElement.lang = lang; // set html property lang
 	}
 }
 
