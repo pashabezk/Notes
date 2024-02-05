@@ -9,7 +9,8 @@ const loadNotes = (): Note[] => {
 	// need to convert data string to data object
 	notes.boards = notes.boards.map((board) => {
 		board.notes = board.notes.map((note) => {
-			note.creationDate = new Date(note.creationDate);
+			note.creationDateTime = new Date(note.creationDateTime);
+			note.lastModified = new Date(note.lastModified);
 			return note;
 		});
 		return board;

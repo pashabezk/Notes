@@ -1,6 +1,6 @@
 {
 	"name": "notes",
-	"version": "0.10.0",
+	"version": "0.10.1",
 	"homepage": "https://pashabezk.github.io/Notes",
 	"private": true,
 	"dependencies": {

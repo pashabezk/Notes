@@ -5,7 +5,8 @@ export interface Note {
 	text: string;
 	color: string;
 	borderColor: string;
-	creationDate: Date;
+	creationDateTime: Date;
+	lastModified: Date;
 }
 
 /** Describes note draft data */

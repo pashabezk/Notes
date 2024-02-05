@@ -23,7 +23,7 @@ class NotesStorage {
 
 	/** Method to add note to storage */
 	addNote = (newNote: Note) => {
-		this.notes.push(newNote);
+		this.notes.unshift(newNote);
 	}
 
 	/** Method to create new note and add it to storage */
@@ -34,7 +34,8 @@ class NotesStorage {
 			text: "",
 			color: DEFAULT_NOTE_COLOR,
 			borderColor: "",
-			creationDate: new Date(),
+			creationDateTime: new Date(),
+			lastModified: new Date(),
 			...noteDraft,
 			id: uuid()
 		};
@@ -63,7 +64,8 @@ class NotesStorage {
 		}
 		const newNote: Note = {
 			...note,
-			...noteDraft
+			...noteDraft,
+			lastModified: new Date(),
 		};
 		if (noteDraft.color && !noteDraft.borderColor) {
 			newNote.borderColor = makeShade(newNote.color, -30);

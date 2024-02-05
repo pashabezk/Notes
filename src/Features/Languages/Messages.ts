@@ -26,6 +26,9 @@ export const messages = {
 
 		// Notes storage
 		new_note_title: "New note",
+
+		// Other
+		site_title: "Notes",
 	},
 	[LANGUAGES.RUSSIAN]: {
 		// Common
@@ -51,6 +54,9 @@ export const messages = {
 
 		// Notes storage
 		new_note_title: "Новая заметка",
+
+		// Other
+		site_title: "Заметки",
 	},
 	[LANGUAGES.GERMAN]: {
 		// Common
@@ -76,5 +82,8 @@ export const messages = {
 
 		// Notes storage
 		new_note_title: "Neuer Notiz",
+
+		// Other
+		site_title: "Notizen",
 	},
 };

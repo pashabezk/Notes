@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react";
-import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined, WarningFilled} from "@ant-design/icons";
+import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined, ExclamationCircleFilled} from "@ant-design/icons";
 import {FormattedMessage, useIntl} from "react-intl";
 import {Modal} from "antd";
 import styles from "./Notes.module.css";
@@ -40,7 +40,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 	const showDeleteConfirm = () => {
 		Modal.confirm({
 			title: intl.formatMessage({id: "confirm_delete_title"}),
-			icon: <WarningFilled/>,
+			icon: <ExclamationCircleFilled/>,
 			content: <ConfirmDeleteBody note={note} intl={intl}/>,
 			okText: intl.formatMessage({id: "delete"}),
 			okType: "danger",
@@ -73,7 +73,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 						className={styles.noteTitle}
 						onClick={() => setIsTitleEdit(true)}
 					>
-						{note.title || <FormattedMessage id="add_note_title"/>}
+						{note.title || <i><FormattedMessage id="add_note_title"/></i>}
 					</h4>
 				)
 			}
@@ -92,13 +92,13 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 						onClick={setTextToEditMode}
 						className={"scrollbar " + styles.noteText}
 					>
-						{note.text || <FormattedMessage id="add_note_text"/>}
+						{note.text || <i><FormattedMessage id="add_note_text"/></i>}
 					</pre>
 				)
 			}
 			<div className={styles.noteBottomBar}>
 				<ClockCircleOutlined style={secondaryIconsStyle}/>
-				<p className={styles.noteDate}>{dateToDateTime(note.creationDate)}</p>
+				<p className={styles.noteDate}>{dateToDateTime(note.lastModified)}</p>
 				<div className={styles.iconContainer}>
 					<input type="color" onChange={onColorChange} className={styles.hiddenColorPicker}/>
 					<BgColorsOutlined style={secondaryIconsStyle}/>

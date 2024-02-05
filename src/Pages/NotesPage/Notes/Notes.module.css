@@ -2,12 +2,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;
-	align-items: flex-start;
+	align-items: stretch;
 }
 
 .noteContainer {
 	width: calc(25% - 15px);
-	max-height: 300px;
+	max-height: 250px;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -49,6 +49,7 @@
 	word-wrap: break-word;
 	padding: 5px;
 	overflow: auto;
+	flex-grow: 1;
 }
 
 .noteTextArea {
