@@ -8,6 +8,7 @@ import {messages} from "./Features/Languages/Messages";
 import {DEFAULT_LANG, LANGUAGES} from "./Features/Languages/Constants";
 import languageStorage from "./Features/Languages/LanguageStorage";
 import {LS_LANGUAGE} from "./Shared/LocalStorageConstants";
+import DisclaimerModal from "./Shared/Components/DisclaimerModal/DisclaimerModal";
 
 const App = observer(() => {
 	const {language, setLanguage} = languageStorage;
@@ -41,6 +42,7 @@ const App = observer(() => {
 				</main>
 				<AppFooter/>
 			</div>
+			<DisclaimerModal/>
 		</IntlProvider>
 	);
 });
