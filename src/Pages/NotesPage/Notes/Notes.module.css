@@ -6,12 +6,24 @@
 }
 
 .noteContainer {
-	width: 200px;
+	width: calc(25% - 15px);
 	max-height: 300px;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	border: solid 2px;
+
+	@media (max-width: 870px) {
+		width: calc(33% - 10px);
+	}
+
+	@media (max-width: 600px) {
+		width: calc(50% - 10px);
+	}
+
+	@media (max-width: 380px) {
+		width: 100%;
+	}
 }
 
 .noteTitle {
@@ -76,4 +88,10 @@
 	height: 14px;
 	position: absolute;
 	cursor: pointer;
+}
+
+.confirmDeleteNoteBody {
+	border-left: solid 4px;
+	padding-left: 5px;
+	margin-bottom: 5px;
 }

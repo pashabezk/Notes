@@ -1,15 +1,17 @@
 import React, {useRef, useState} from "react";
-import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined} from "@ant-design/icons";
-import {FormattedMessage} from "react-intl";
+import {BgColorsOutlined, ClockCircleOutlined, DeleteOutlined, WarningFilled} from "@ant-design/icons";
+import {FormattedMessage, useIntl} from "react-intl";
+import {Modal} from "antd";
 import styles from "./Notes.module.css";
 import {Note} from "../../../Features/Notes/Types";
 import {dateToDateTime} from "../../../Features/DateTimeUtils/DateTimeUtils";
 import NoteEditTitle from "./NoteEditTitle";
 import NoteEditText from "./NoteEditText";
 import notesStorage from "../../../Features/Notes/NotesStorage";
+import ConfirmDeleteBody from "./ConfirmDeleteBody";
 
 interface NoteComponentProps {
-	note: Note
+	note: Note;
 }
 
 const secondaryIconsStyle = {
@@ -19,6 +21,7 @@ const secondaryIconsStyle = {
 
 /** Component represent one note */
 const NoteComponent = ({note}: NoteComponentProps) => {
+	const intl = useIntl();
 	const [isTitleEdit, setIsTitleEdit] = useState(false);
 	const [isTextEdit, setIsTextEdit] = useState(false);
 	const [textHeight, setTextHeight] = useState(30); // for setting textarea height
@@ -32,7 +35,22 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 
 	const onColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		updateNote(note.id, {color: e.target.value});
-	}
+	};
+
+	const showDeleteConfirm = () => {
+		Modal.confirm({
+			title: intl.formatMessage({id: "confirm_delete_title"}),
+			icon: <WarningFilled/>,
+			content: <ConfirmDeleteBody note={note} intl={intl}/>,
+			okText: intl.formatMessage({id: "delete"}),
+			okType: "danger",
+			cancelText: intl.formatMessage({id: "cancel"}),
+			centered: true,
+			closable: true,
+			maskClosable: true,
+			onOk: () => deleteNote(note.id),
+		});
+	};
 
 	return (
 		<div
@@ -88,7 +106,7 @@ const NoteComponent = ({note}: NoteComponentProps) => {
 				<div className={styles.iconContainer}>
 					<DeleteOutlined
 						style={secondaryIconsStyle}
-						onClick={() => deleteNote(note.id)}
+						onClick={showDeleteConfirm}
 					/>
 				</div>
 			</div>
