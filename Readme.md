@@ -1,5 +1,5 @@
 # Notes
-Multilingual react app with notes stores locally in your browser
+Multilingual react app with notes stored locally in your browser
 
 > #### Project goals
 > Creating this project author want to practice creating multilingual applications and train [MobX](https://mobx.js.org/) library
