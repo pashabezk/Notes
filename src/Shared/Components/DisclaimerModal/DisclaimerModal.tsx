@@ -33,6 +33,7 @@ const DisclaimerModal = () => {
 			title={formatMessage({id: "disclaimer_title"})}
 			closable={false}
 			maskClosable={false}
+			centered
 			footer={[
 				<Checkbox
 					key="checkbox"
